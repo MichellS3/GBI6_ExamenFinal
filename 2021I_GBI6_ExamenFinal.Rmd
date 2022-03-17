@@ -102,7 +102,7 @@ La tabla resultante tendrá tres columnas: ```dataset, gen, expresion_level```.
 ```{r df_long}
 df_long <- long_df(df)
 df_long <- df_long[,-1]
-df_long
+head(df_long, n=5)
 
 ```
 
@@ -111,7 +111,7 @@ df_long
 library("sjPlot")
 library("sjmisc")
 BRCA <- df_long %>% group_by(dataset,gen)
-descr(x=BRCA, out="browser",file="results/mRNA_expr_summary.doc")
+TDesc <- descr(x=BRCA, out="browser",file="results/mRNA_expr_summary.doc")
 
 ```
 
@@ -119,8 +119,8 @@ descr(x=BRCA, out="browser",file="results/mRNA_expr_summary.doc")
 
 
 ```{tex}
-# Escriba aquí su interpretación 
-
+# Resultados estadísticos
+#En base a las tablas se observa que existen una mayor cantidad de datos para el Carcinoma invasivo de mama (BRCA) en el cual se expresa con mayor nivel el gen ESR1 con un promedio de 2.3. Por otro lado para la cohorte pan riñón (KIPAN), existe una frecuencia de 88 observaciones, con una mayor expresion del gen  PTEN con u promedio de 0,72. Mientras que para el Carcinoma renal de células claras renales (KIRP) existen unicamente 16 observaciónes con un alto nivel de expresión del men PTEN. Por el contrario para el Carcinoma de cpelulas escamosas de pulmón existen 154 observaciones de las cuales el gen con mayor expresio fue MUC1 con un promedio de 0.56. En contraste el Cistoadenocarcinoma seroso de ovario tiene 561 observaciones, y se expresa con mayor frecuenta el gen FN1 con un promedio de 1,33 en los niveles de expresion. Finalmente, el Carcinoma de endometrio del cuerpo uterino posee 54 observaciones, y se expresa mayoritariamente el gen ESR1 con un promedio de 2,17. 
 ```
 
 
@@ -138,9 +138,6 @@ tcga_boxplots <- function(data){
   c <- b %>% ggplot(aes(x=gen,y=expresion_level, color = gen)) +
   geom_boxplot() + geom_jitter ()
 }
-#Ejemplo con el dataset "BRCA"
-d <- tcga_boxplots("KIRP")
-d
 
 ```
 
@@ -148,14 +145,17 @@ d
 ```{r list_boxplots}
 e <- unique(df_long$dataset)
 cancertype_boxplots <- lapply(e, tcga_boxplots)
+o <- length(cancertype_boxplots)
+print (paste("El número de elementos de la lista cancertype_boxplots es: ", o))
+print ("El tercer elemento de la lista es:") 
 cancertype_boxplots
-
+cancertype_boxplots[[3]]
 ```
 
 ### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
 ```{r boxplot3}
 d <- cancertype_boxplots[[3]]
-ggsave(filename = "results/boxplot3.png", units="cm",
+ggsave(filename = "results/boxplot3.png", units="in",
 dpi = 300,limitsize=TRUE)
 
 ```
@@ -175,10 +175,6 @@ reg_gen_expression <- function(d){
   h <- k %>% ggplot(aes(x = expresion_level1, y = expresion_level2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
   h
 }
-# Escriba aquí su función reg_gen_expression
-d <- c("GATA3","PTEN")
-i <- reg_gen_expression(d)
-i
 
 ```
 
@@ -188,9 +184,9 @@ i
 n <- unique(df_long$gen)
 l <- combn(n,m=2,simplify = FALSE)
 reg_genplots <- lapply(l,reg_gen_expression)
-reg_genplots[1]
-
-# Escriba el código para generar la lista. 
+print (paste("El número de elementos de la lista reg_genplots es: ", length(reg_genplots)))
+print ("El onceavo elemento de la lista es:") 
+reg_genplots[[11]]
 
 ```
 
@@ -207,7 +203,7 @@ dpi = 300,limitsize=TRUE)
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
 
 ```{tex}
-# Esciba aquí su intepretación
+
 
 ```
 
