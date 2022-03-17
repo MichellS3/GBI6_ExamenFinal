@@ -178,12 +178,11 @@ dpi = 300,limitsize=TRUE)
 reg_gen_expression <- function(d){
   genx=d[1]
   geny=d[2]
-  df_long1 <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to= "gen1", values_to ="expresion_level1")
-  df_long2 <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to= "gen2", values_to ="expresion_level2")
-  g <- df_long1 %>% filter (gen1 == genx)
-  j <- df_long2 %>% filter (gen2 == geny)
-  k <- merge(x=g, y=j, all=TRUE)
-  h <- k %>% ggplot(aes(x = expresion_level1, y = expresion_level2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
+  g <- df_long %>% filter (gen == genx)
+  j <- df_long %>% filter (gen == geny)
+  k <- cbind(g,j)
+  r <- tibble("dataset"=k[,1],"gen1"=k[,3],"gen2"=k[,6])
+  h <- r %>% ggplot(aes(x = gen1, y = gen2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
   h
 }
 
