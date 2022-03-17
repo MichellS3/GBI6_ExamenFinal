@@ -120,7 +120,18 @@ TDesc <- descr(x=BRCA, out="browser",file="results/mRNA_expr_summary.doc")
 
 ```{tex}
 # Resultados estadísticos
-#En base a las tablas se observa que existen una mayor cantidad de datos para el Carcinoma invasivo de mama (BRCA) en el cual se expresa con mayor nivel el gen ESR1 con un promedio de 2.3. Por otro lado para la cohorte pan riñón (KIPAN), existe una frecuencia de 88 observaciones, con una mayor expresion del gen  PTEN con u promedio de 0,72. Mientras que para el Carcinoma renal de células claras renales (KIRP) existen unicamente 16 observaciónes con un alto nivel de expresión del men PTEN. Por el contrario para el Carcinoma de cpelulas escamosas de pulmón existen 154 observaciones de las cuales el gen con mayor expresio fue MUC1 con un promedio de 0.56. En contraste el Cistoadenocarcinoma seroso de ovario tiene 561 observaciones, y se expresa con mayor frecuenta el gen FN1 con un promedio de 1,33 en los niveles de expresion. Finalmente, el Carcinoma de endometrio del cuerpo uterino posee 54 observaciones, y se expresa mayoritariamente el gen ESR1 con un promedio de 2,17. 
+#En base a las tablas se observa que existen una mayor cantidad de datos para el Carcinoma 
+#invasivo de mama (BRCA) en el cual se expresa con mayor nivel el gen ESR1 con un promedio de 
+#2.3. Por otro lado para la cohorte pan riñón (KIPAN), existe una frecuencia de 88 
+#observaciones, con una mayor expresion del gen  PTEN con un promedio de 0,72. Mientras que 
+#para el Carcinoma renal de células claras renales (KIRP) existen unicamente 16 
+#observaciónes con un alto nivel de expresión del men PTEN. Por el contrario, para el 
+#Carcinoma de células escamosas de pulmón existen 154 observaciones de las cuales el gen con 
+#mayor expresio fue MUC1 con un promedio de 0.56. En contraste el Cistoadenocarcinoma 
+#seroso de ovario tiene 561 observaciones, y se expresa con mayor frecuenta el gen FN1 
+#con un promedio de 1,33 en los niveles de expresion. Finalmente, el Carcinoma de 
+#endometrio del cuerpo uterino posee 54 observaciones, y se expresa mayoritariamente el 
+#gen ESR1 con un promedio de 2,17. 
 ```
 
 
@@ -149,6 +160,7 @@ o <- length(cancertype_boxplots)
 print (paste("El número de elementos de la lista cancertype_boxplots es: ", o))
 print ("El tercer elemento de la lista es:") 
 cancertype_boxplots[[3]]
+
 ```
 
 ### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
@@ -203,10 +215,21 @@ dpi = 300,limitsize=TRUE)
 
 ```{tex}
 # Bloxplot
-#El diagrama de cajas se corrobora que la distribución de los datos de las expresiones de genen no presentan una distribución normal, por lo cual se obseva que los datos estan distribuidos de forma asimétrica con respecto al valor central. Adedmás, se observa la presencia de datos una alta cantidad de valores atípicos, lo que nos lleva a inferir que son situaciones poco comun, o los datos son productos de algún fenómeno.
+#El diagrama de cajas se corrobora que la distribución de los datos de las expresiones de 
+#genes no presentan una distribución normal, por lo cual se obseva que los datos estan 
+#distribuidos de forma asimétrica con respecto al valor central. Adedmás, se observa 
+#la presencia de datos una alta cantidad de valores atípicos, lo que nos lleva a inferir 
+#que son situaciones poco comun, o los datos son productos de algún fenómeno.
 
 # Regresion
-#A simple vista se osberva que los valores de expresion de los genes "PTEN" y "GAPDH", estan concentrados en un solo lugar, no obstante tambien existen una minoria valores lejanos al concentrado. Por otro las regresiones para BRCA,LUSC, UCEC y KIRT muestran una relación proporcionalmente inversa entre los genes "PTEN" y "GAPDH", es decir, si aumenta el nivel de expresión de "PTEN", dismiye el nivel de expresion del gen "GAPDH", mientas que para KIPAN y OV ocurre lo inverso, por tanto existe una relacion directamente proporcional, si aumenta el nivel de expresión del gen "PTEN", aumenta el nivel de expresion de "GAPDH".
+#A simple vista se osberva que los valores de expresion de los genes "PTEN" y "GAPDH", 
+#estan concentrados en un solo lugar, no obstante tambien existen una minoria valores 
+#lejanos al concentrado. Por otro las regresiones para BRCA,LUSC, UCEC y KIRT muestran una
+#relación proporcionalmente inversa entre los genes "PTEN" y "GAPDH", es decir, si 
+#aumenta el nivel de expresión de "PTEN", dismiye el nivel de expresion del gen "GAPDH", 
+#mientas que para KIPAN y OV ocurre lo inverso, por tanto existe una relacion 
+#directamente proporcional, si aumenta el nivel de expresión del gen "PTEN", aumenta 
+#el nivel de expresion de "GAPDH".
 
 ```
 
